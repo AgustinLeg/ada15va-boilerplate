@@ -1,12 +1,24 @@
+import { Counter } from './components/Counter'
+import { CounterB } from './components/CounterB'
+import { Header } from './components/Header'
+import { MovieList } from './components/movies/MovieList'
+import { Stack } from '@chakra-ui/react'
+import { useBoolean } from './hooks/useBoolean'
+
 function App() {
+  const { value, setTrue } = useBoolean()
+
   return (
-    <>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, enim quam?
-      Incidunt pariatur beatae deserunt soluta illo iusto ipsum voluptas minima
-      excepturi, exercitationem eius repudiandae consectetur perspiciatis velit
-      nostrum ad?
-    </>
-  );
+    <Stack as="main" spacing={8}>
+      <Header />
+      <MovieList />
+      <Counter />
+      <CounterB />
+
+      <h1>{value ? 'Verdadero' : 'Falso'}</h1>
+      <button onClick={setTrue}>Cambiar</button>
+    </Stack>
+  )
 }
 
-export default App;
+export default App
